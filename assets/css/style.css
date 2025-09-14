@@ -658,13 +658,19 @@ article.active {
 .content-card {
   position: relative;
   background: var(--bg-gradient-onyx);
-  padding: 20px;
+  padding: 15px;
+  padding-top: 45px;
   border-radius: 14px;
   box-shadow: var(--shadow-2);
   cursor: pointer;
   z-index: 1;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(238, 169, 144, 0.3);
+}
+
+.testimonials-item .content-card {
+  padding: 20px;
+  padding-top: 20px;
   text-align: center;
   display: flex;
   flex-direction: column;

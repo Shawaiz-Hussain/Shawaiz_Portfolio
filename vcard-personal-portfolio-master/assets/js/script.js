@@ -58,11 +58,9 @@ const initProgressBars = () => {
             const currentValue = Math.round(targetValue * easeProgress);
             
             // Update both elements
-            if (dataElement) {
-                dataElement.textContent = currentValue;
-                dataElement.value = currentValue;
-            }
-            progressBar.style.setProperty('width', `${currentValue}%`, 'important');
+            dataElement.textContent = currentValue;
+            dataElement.value = currentValue;
+            progressBar.style.width = `${currentValue}%`;
             
             if (progress < 1) {
                 requestAnimationFrame(update);
@@ -81,10 +79,8 @@ const initProgressBars = () => {
                 const targetPercentage = parseInt(dataElement.value);
                 
                 // Reset and start animation
-                progressBar.style.setProperty('width', '0%', 'important');
-                if (dataElement) {
-                    dataElement.textContent = '0';
-                }
+                progressBar.style.width = '0%';
+                dataElement.textContent = '0';
                 
                 setTimeout(() => {
                     animateProgress(dataElement, progressBar, targetPercentage);
@@ -98,12 +94,9 @@ const initProgressBars = () => {
     
     // Initialize all progress bars
     document.querySelectorAll('.skill-progress-fill').forEach(bar => {
-        // Force override inline styles
-        bar.style.setProperty('width', '0%', 'important');
+        bar.style.width = '0%';
         const dataElement = bar.parentElement.previousElementSibling.querySelector('data');
-        if (dataElement) {
-            dataElement.textContent = '0';
-        }
+        dataElement.textContent = '0';
         progressObserver.observe(bar);
     });
 };
@@ -298,7 +291,8 @@ const projectsData = {
             backend: ['Firebase', 'Node.js', 'Express', 'Stripe API']
         },
         links: {
-            github: 'https://github.com/Shawaiz-Hussain/textile_ecomm_mobile_app'
+            github: 'https://github.com/yourusername/chohantextile',
+            demo: 'https://chohantextile-demo.com'
         }
     },
     'solarsolutions': {
@@ -333,96 +327,18 @@ const projectsData = {
             backend: ['PHP', 'MySQL', 'RESTful API']
         },
         links: {
-            github: 'https://github.com/Shawaiz-Hussain/solar_solutions'
+            github: 'https://github.com/yourusername/solar-solutions',
+            demo: 'https://solar-solutions-demo.com'
         }
     },
-    'urbanarc': {
-        id: 'urbanarc',
-        title: 'Urban Arc',
-        description: 'A contemporary furniture company website showcasing premium furniture designs and craftsmanship',
-        category: 'Web Development',
-        date: 'July 2023',
-        type: 'E-commerce Furniture Retail Platform',
-        image: './assets/images/urbaner_web.jpg',
-        overview: 'Urban Arc is a professional website for a furniture design and manufacturing company. It showcases their product portfolio, services, and expertise in creating quality furniture pieces that blend comfort with aesthetic appeal.',
-        features: [
-            {
-                title: 'Product Showcase',
-                description: 'Beautiful gallery displaying furniture collections with detailed product information and specifications'
-            },
-            {
-                title: 'Product Categories',
-                description: 'Comprehensive organization of furniture types including visitor chairs, office furniture, and residential pieces'
-            },
-            {
-                title: 'Responsive Design',
-                description: 'Fully responsive website optimized for all devices and screen sizes'
-            },
-            {
-                title: 'E-commerce Integration',
-                description: 'Easy-to-use shopping cart, checkout system, and consultation booking for potential clients'
-            },
-            {
-                title: 'Customer Engagement',
-                description: 'Direct WhatsApp integration for personalized customer service and inquiries'
-            }
-        ],
-        technologies: {
-            frontend: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
-            backend: ['PHP', 'MySQL', 'Secure Payment Processing']
-        },
-        links: {
-            github: 'https://github.com/Shawaiz-Hussain/urbanarc',
-            live: 'https://urbanarc.pk/'
-        }
-    },
-    'arteest': {
-        id: 'arteest',
-        title: 'Arteest',
-        description: 'An e-commerce platform offering art-inspired streetwear and creative merchandise featuring custom artwork and pop culture designs',
-        category: 'Web Development',
-        date: 'August 2023',
-        type: 'E-commerce Art & Apparel Store',
-        image: './assets/images/aarteest_Web.jpg',
-        overview: 'Arteest is a vibrant e-commerce website specializing in art-inspired merchandise. It showcases unique apparel and products featuring original artwork, combining streetwear fashion with pop culture influences to create wearable art.',
-        features: [
-            {
-                title: 'Product Showcase',
-                description: 'Beautiful gallery displaying art-inspired merchandise including T-shirts, hoodies, mugs, and art prints'
-            },
-            {
-                title: 'Shop Organization',
-                description: 'Comprehensive categorization of products by type, collection, and artwork style'
-            },
-            {
-                title: 'Responsive Design',
-                description: 'Fully responsive website optimized for all devices and screen sizes'
-            },
-            {
-                title: 'E-commerce Integration',
-                description: 'Streamlined shopping experience with "quick add" options, secure checkout, and inventory management'
-            }
-        ],
-        technologies: {
-            frontend: ['HTML5', 'CSS3', 'JavaScript'],
-            backend: ['Node.js/PHP', 'MongoDB/MySQL', 'Shopify/WooCommerce/Magento']
-        },
-        links: {
-            github: 'https://github.com/Shawaiz-Hussain/arteest'
-        }
-    }
+    // Add more projects here...
 };
 
 // Function to open project detail view
 function openProjectDetail(projectId) {
-    console.log('Opening project detail for:', projectId);
     // Get project data
     const project = projectsData[projectId];
-    if (!project) {
-        console.error('Project not found:', projectId);
-        return;
-    }
-    console.log('Project data found:', project);
+    if (!project) return;
 
     // Hide all articles
     const articles = document.querySelectorAll('article');
@@ -478,14 +394,9 @@ function openProjectDetail(projectId) {
         projectImage.alt = project.title;
         
         // Update links
-        const actionBtn = projectDetailArticle.querySelector('.project-detail-actions a');
-        if (project.links.live) {
-            actionBtn.href = project.links.live;
-            actionBtn.innerHTML = '<ion-icon name="open-outline"></ion-icon>View Live Site';
-        } else if (project.links.github) {
-            actionBtn.href = project.links.github;
-            actionBtn.innerHTML = '<ion-icon name="logo-github"></ion-icon>View on GitHub';
-        }
+        const [githubBtn, demoBtn] = projectDetailArticle.querySelectorAll('.project-detail-actions a');
+        githubBtn.href = project.links.github;
+        demoBtn.href = project.links.demo;
         
         projectDetailArticle.classList.add('active');
         window.scrollTo(0, 0);
@@ -543,50 +454,22 @@ document.addEventListener('keydown', function(event) {
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize auto-scroll for testimonials
     initTestimonialsScroll();
-    
-    // Initialize progress bars
-    initProgressBars();
 
     // Add click event to all project items
     const projectItems = document.querySelectorAll('.project-item');
     projectItems.forEach(item => {
-        // Get project ID from data attribute or normalize from title
-        let projectId = item.dataset.projectId;
-        if (!projectId) {
-            const projectTitle = item.querySelector('.project-title').textContent;
-            projectId = projectTitle.replace(/\s+/g, '').toLowerCase();
-        }
+        const projectId = item.querySelector('.project-title').textContent;
         
-        // Add click event to the entire project item
-        const projectLink = item.querySelector('.project-link');
-        if (projectLink) {
-            projectLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Project link clicked for:', projectId);
-                openProjectDetail(projectId);
-            });
-        }
-        
-        // Add click event to the eye icon specifically
+        // Add click event to the eye icon
         const eyeIcon = item.querySelector('.project-item-icon-box');
         if (eyeIcon) {
             eyeIcon.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                console.log('Eye icon clicked for:', projectId);
-                openProjectDetail(projectId);
+                // Match the project ID exactly as it appears in the projectsData object
+                const normalizedId = projectId.replace(/\s+/g, '').toLowerCase();
+                openProjectDetail(normalizedId);
             });
-            
-            // Add hover debugging for Solar Solutions
-            if (projectId === 'solarsolutions') {
-                const projectLink = item.querySelector('.project-link');
-                projectLink.addEventListener('mouseenter', function() {
-                    console.log('Solar Solutions hover started');
-                });
-                projectLink.addEventListener('mouseleave', function() {
-                    console.log('Solar Solutions hover ended');
-                });
-            }
         }
     });
     

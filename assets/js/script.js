@@ -410,6 +410,40 @@ const projectsData = {
         links: {
             github: 'https://github.com/Shawaiz-Hussain/arteest'
         }
+    },
+    'streamhubplatform': {
+        title: 'Kron Cast',
+        description: 'A comprehensive live-streaming and event platform designed for creators and audiences',
+        category: 'Web Design',
+        date: '2024',
+        type: 'Figma Design',
+        overview: 'Kron Cast is a modern live-streaming and event platform that combines the best features of streaming platforms like Twitch/YouTube Live with event-based platforms like Eventbrite/StageIt. The design focuses on creating an engaging environment where users can watch live events, discover content, and interact with creators in real-time.',
+        image: './assets/images/KRONCAST.png',
+        features: [
+            {
+                title: 'Live Event Streaming',
+                description: 'Main video player interface for watching live events and streams with high-quality viewing experience.'
+            },
+            {
+                title: 'Real-time Chat',
+                description: 'Interactive chat panel for real-time audience engagement and community building during live events.'
+            },
+            {
+                title: 'Event Discovery',
+                description: 'Comprehensive event discovery system with cards showcasing upcoming events, courses, and streams.'
+            },
+            {
+                title: 'Creator Support',
+                description: 'Tools and features for content creators to manage their streams, interact with audiences, and grow their community.'
+            }
+        ],
+        technologies: {
+            frontend: ['Figma', 'UI/UX Design', 'Prototyping', 'Wireframing'],
+            backend: ['Component Library', 'Design Tokens', 'Style Guide', 'Responsive Design']
+        },
+        links: {
+            github: '#'
+        }
     }
 };
 

@@ -3401,6 +3401,12 @@ article.active {
 /* Project detail page specific */
 article[data-page="project-detail"] {
   padding: 20px;
+  background: var(--bg-gradient-jet);
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  overflow-x: hidden;
 }
 
 @media (min-width: 580px) {

@@ -444,6 +444,40 @@ const projectsData = {
         links: {
             github: '#'
         }
+    },
+    'gigbase': {
+        title: 'Gigbase',
+        description: 'A comprehensive freelance and gig management platform designed for freelancers and contractors',
+        category: 'Web Design',
+        date: '2024',
+        type: 'Figma Design',
+        overview: 'Gigbase is a freelance and gig management platform designed to help freelancers, contractors, and small agencies manage their projects, clients, and income in one place. The design features a minimalist black & white theme with professional dashboard layouts similar to SaaS tools like Notion and Trello, but tailored specifically for freelancers.',
+        image: './assets/images/Gigbase.png',
+        features: [
+            {
+                title: 'Time Tracking Tool',
+                description: 'Built-in functionality for starting, pausing, and stopping timers to log billable hours for specific projects with detailed tracking capabilities.'
+            },
+            {
+                title: 'Dashboard & Analytics',
+                description: 'Central hub showing tasks, deadlines, profitability overview, earnings insights, and upcoming meetings to provide business overview at a glance.'
+            },
+            {
+                title: 'Service Management',
+                description: 'Freelancers can list services, set pricing models (hourly, fixed, custom), and manage client requests with professional interface.'
+            },
+            {
+                title: 'Integrated Messaging',
+                description: 'Built-in chat system to communicate with clients directly inside the platform, keeping all project discussions organized in one place.'
+            }
+        ],
+        technologies: {
+            frontend: ['Figma', 'UI/UX Design', 'Dashboard Design', 'SaaS Interface'],
+            backend: ['Workflow Design', 'User Experience', 'Information Architecture', 'Responsive Design']
+        },
+        links: {
+            github: '#'
+        }
     }
 };
 
